@@ -217,6 +217,14 @@
     font-size: 14.5px;
   }
   .players li::before { content: "●"; color: var(--online); margin-right: 7px; font-size: 10px; vertical-align: 1px; }
+  .live-badge {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.06em;
+    color: var(--online); vertical-align: 2px; margin-left: 4px;
+    opacity: 0; transition: opacity .3s;
+  }
+  .live-badge.on { opacity: 1; animation: breathe 2.6s ease-in-out infinite; }
+  .pill.down { color: var(--accent); border-color: var(--accent); background: var(--accent-soft); }
+  .empty-note { margin: 0; color: var(--muted); }
 
   .faq { display: grid; gap: 14px; }
   .faq h3 { margin: 0 0 4px; font-size: 15.5px; }
@@ -240,9 +248,9 @@
     <p class="eyebrow">PALWORLD · 私人伺服器</p>
     <h1>Where Wind Meet Sibling</h1>
     <div class="pills">
-      <span class="pill online"><span class="dot"></span>運作中</span>
-      <span class="pill">版本 v1.0.0.100427</span>
-      <span class="pill">在線 1 / 10</span>
+      <span class="pill online" id="pill-status"><span class="dot"></span>運作中</span>
+      <span class="pill" id="pill-version">版本 v1.0.0.100427</span>
+      <span class="pill" id="pill-count">在線 1 / 10</span>
     </div>
   </div>
 </header>
@@ -302,12 +310,14 @@
   </section>
 
   <section>
-    <h2 class="label">目前狀態（快照）</h2>
+    <h2 class="label">目前在線 <span id="live-badge" class="live-badge">● LIVE</span></h2>
     <div class="card">
-      <ul class="players">
-        <li>朱鳶</li>
-      </ul>
-      <p class="hint">快照時間：2026-07-13 09:40（台灣時間）。此頁非即時資料，最新狀況請看 Discord。</p>
+      <div id="live-body">
+        <ul class="players">
+          <li>朱鳶</li>
+        </ul>
+      </div>
+      <p class="hint" id="live-hint">載入中…</p>
     </div>
   </section>
 
@@ -378,6 +388,67 @@
     }
     setTimeout(() => { btn.textContent = "複製"; }, 2000);
   });
+
+  // 即時在線名單：每 60 秒抓一次 status.json（由伺服器主機每 10 分鐘更新）
+  // 註：僅在 GitHub Pages 版本生效；Artifact 版因安全限制無法對外抓取，會維持靜態顯示。
+  const esc = (s) => s.replace(/[&<>"']/g, c => (
+    {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+  function fmtTime(iso) {
+    try {
+      const d = new Date(iso);
+      const p = (n) => String(n).padStart(2, "0");
+      return `${d.getMonth()+1}/${d.getDate()} ${p(d.getHours())}:${p(d.getMinutes())}`;
+    } catch (e) { return iso; }
+  }
+
+  async function refreshStatus() {
+    let s;
+    try {
+      const res = await fetch("status.json?t=" + Date.now(), { cache: "no-store" });
+      if (!res.ok) throw new Error("http " + res.status);
+      s = await res.json();
+    } catch (e) {
+      return; // 抓不到就保留現有畫面（Artifact 版或網路問題）
+    }
+
+    const badge = document.getElementById("live-badge");
+    const statusPill = document.getElementById("pill-status");
+    const countPill = document.getElementById("pill-count");
+    const verPill = document.getElementById("pill-version");
+    const body = document.getElementById("live-body");
+    const hint = document.getElementById("live-hint");
+
+    badge.classList.add("on");
+
+    if (!s.server_up) {
+      statusPill.className = "pill down";
+      statusPill.textContent = s.booting ? "啟動中…" : "維護中";
+    } else if (s.booting) {
+      statusPill.className = "pill";
+      statusPill.innerHTML = '<span class="dot"></span>啟動中…';
+    } else {
+      statusPill.className = "pill online";
+      statusPill.innerHTML = '<span class="dot"></span>運作中';
+    }
+
+    if (s.version) verPill.textContent = "版本 " + s.version;
+    countPill.textContent = `在線 ${s.count} / ${s.max}`;
+
+    if (!s.server_up) {
+      body.innerHTML = '<p class="empty-note">伺服器維護中，稍候再來 🛠️</p>';
+    } else if (s.players && s.players.length) {
+      body.innerHTML = '<ul class="players">' +
+        s.players.map(n => `<li>${esc(n)}</li>`).join("") + "</ul>";
+    } else {
+      body.innerHTML = '<p class="empty-note">目前無人在線 — 快來當第一個 🐑</p>';
+    }
+
+    hint.textContent = `名單最後異動：${fmtTime(s.changed_at)}（台灣時間）· 每 10 分鐘自動更新`;
+  }
+
+  refreshStatus();
+  setInterval(refreshStatus, 60000);
 </script>
 </body>
 </html>
