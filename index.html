@@ -402,6 +402,7 @@
     } catch (e) { return iso; }
   }
 
+  let everLoaded = false;
   async function refreshStatus() {
     let s;
     try {
@@ -409,8 +410,13 @@
       if (!res.ok) throw new Error("http " + res.status);
       s = await res.json();
     } catch (e) {
+      if (!everLoaded) {
+        document.getElementById("live-hint").innerHTML =
+          '即時名單請見 <a href="https://za29517585.github.io/wwm-sibling-server/">伺服器官網</a>。';
+      }
       return; // 抓不到就保留現有畫面（Artifact 版或網路問題）
     }
+    everLoaded = true;
 
     const badge = document.getElementById("live-badge");
     const statusPill = document.getElementById("pill-status");
