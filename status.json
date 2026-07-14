@@ -2,13 +2,14 @@
   "server_up": true,
   "booting": false,
   "version": "v1.0.0.100427",
-  "count": 3,
+  "count": 4,
   "max": 10,
   "players": [
     "HimS’L",
+    "朱鳶",
     "鏡流",
     "青石"
   ],
-  "checked_at": "2026-07-14T21:05:05+08:00",
-  "changed_at": "2026-07-14T21:05:05+08:00"
+  "checked_at": "2026-07-14T22:05:05+08:00",
+  "changed_at": "2026-07-14T22:05:05+08:00"
 }
