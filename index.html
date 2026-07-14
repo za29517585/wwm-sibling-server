@@ -463,7 +463,7 @@
       body.innerHTML = '<p class="empty-note">目前無人在線 — 快來當第一個 🐑</p>';
     }
 
-    hint.textContent = `名單最後異動：${fmtTime(s.changed_at)}（台灣時間）· 每小時自動更新`;
+    hint.textContent = `名單最後異動：${fmtTime(s.changed_at)}（台灣時間）· 每 30 分鐘自動更新`;
   }
 
   refreshStatus();
