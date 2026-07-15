@@ -2,15 +2,14 @@
   "server_up": true,
   "booting": false,
   "version": "v1.0.1.100619",
-  "count": 5,
+  "count": 4,
   "max": 10,
   "players": [
     "00000",
     "irismoon",
-    "砂金",
     "鏡流",
     "青石"
   ],
-  "checked_at": "2026-07-15T19:35:00+08:00",
-  "changed_at": "2026-07-15T19:35:00+08:00"
+  "checked_at": "2026-07-15T20:05:00+08:00",
+  "changed_at": "2026-07-15T20:05:00+08:00"
 }
