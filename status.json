@@ -1,14 +1,10 @@
 {
   "server_up": true,
-  "booting": false,
+  "booting": true,
   "version": "v1.0.1.100619",
-  "count": 3,
+  "count": 0,
   "max": 10,
-  "players": [
-    "00000",
-    "八重神子",
-    "青石"
-  ],
-  "checked_at": "2026-07-16T21:05:00+08:00",
-  "changed_at": "2026-07-16T21:05:00+08:00"
+  "players": [],
+  "checked_at": "2026-07-16T22:05:15+08:00",
+  "changed_at": "2026-07-16T22:05:15+08:00"
 }
