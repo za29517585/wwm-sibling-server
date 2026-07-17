@@ -2,12 +2,11 @@
   "server_up": true,
   "booting": false,
   "version": "v1.0.1.100619",
-  "count": 2,
+  "count": 1,
   "max": 10,
   "players": [
-    "HimS’L",
-    "青石"
+    "HimS’L"
   ],
-  "checked_at": "2026-07-18T04:25:02+08:00",
-  "changed_at": "2026-07-18T03:25:03+08:00"
+  "checked_at": "2026-07-18T04:35:04+08:00",
+  "changed_at": "2026-07-18T04:35:04+08:00"
 }
