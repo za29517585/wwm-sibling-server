@@ -2,15 +2,14 @@
   "server_up": true,
   "booting": false,
   "version": "v1.0.1.100619",
-  "count": 5,
+  "count": 4,
   "max": 10,
   "players": [
     "irismoon",
     "八重神子",
     "鏡流",
-    "阿汀",
-    "青石"
+    "阿汀"
   ],
-  "checked_at": "2026-07-18T19:45:03+08:00",
-  "changed_at": "2026-07-18T19:45:03+08:00"
+  "checked_at": "2026-07-18T19:55:02+08:00",
+  "changed_at": "2026-07-18T19:55:02+08:00"
 }
