@@ -2,13 +2,14 @@
   "server_up": true,
   "booting": false,
   "version": "v1.0.1.100619",
-  "count": 3,
+  "count": 4,
   "max": 10,
   "players": [
+    "夏禾",
     "日安",
     "阿汀",
     "青石"
   ],
-  "checked_at": "2026-07-19T19:25:03+08:00",
-  "changed_at": "2026-07-19T19:25:03+08:00"
+  "checked_at": "2026-07-19T20:25:03+08:00",
+  "changed_at": "2026-07-19T20:25:03+08:00"
 }
