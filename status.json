@@ -2,11 +2,9 @@
   "server_up": true,
   "booting": false,
   "version": "v1.0.1.100619",
-  "count": 1,
+  "count": 0,
   "max": 10,
-  "players": [
-    "阿汀"
-  ],
-  "checked_at": "2026-07-21T20:15:00+08:00",
-  "changed_at": "2026-07-21T20:15:00+08:00"
+  "players": [],
+  "checked_at": "2026-07-21T20:25:00+08:00",
+  "changed_at": "2026-07-21T20:25:00+08:00"
 }
