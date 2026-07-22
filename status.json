@@ -2,11 +2,9 @@
   "server_up": true,
   "booting": false,
   "version": "v1.0.1.100619",
-  "count": 1,
+  "count": 0,
   "max": 10,
-  "players": [
-    "青石"
-  ],
-  "checked_at": "2026-07-23T02:15:00+08:00",
-  "changed_at": "2026-07-23T01:15:01+08:00"
+  "players": [],
+  "checked_at": "2026-07-23T02:45:04+08:00",
+  "changed_at": "2026-07-23T02:45:04+08:00"
 }
