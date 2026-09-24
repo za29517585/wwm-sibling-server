@@ -1,10 +1,10 @@
 {
   "server_up": false,
   "booting": false,
-  "version": "v1.0.3.101283",
+  "version": null,
   "count": 0,
   "max": 10,
   "players": [],
-  "checked_at": "2026-08-29T16:25:04+08:00",
-  "changed_at": "2026-08-29T16:25:04+08:00"
+  "checked_at": "2026-09-24T09:51:23+08:00",
+  "changed_at": "2026-09-24T09:51:23+08:00"
 }
